@@ -8,18 +8,18 @@
 
     svg {
       margin-right: 8px;
-    }
+    };
 
     b {
       margin-right: 8px;
-    }
+    };
 
     span {
       color: $orange;
       border-bottom: 1px dashed $orange;
       cursor: pointer;
-    }
-  }
+    };
+  };
 
   &__popup {
     position: absolute;
@@ -41,13 +41,13 @@
         &.active,
         &:hover {
           background: rgba(254, 95, 30, 0.05);
-        }
+        };
 
         &.active {
           font-weight: bold;
           color: $orange;
-        }
-      }
-    }
-  }
-}
+        };
+      };
+    };
+  };
+};

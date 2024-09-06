@@ -1,6 +1,6 @@
-const arrCategories = ['все', 'Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые']
+const arrCategories = ['все', 'Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые'];
 
-function Categories({ activeIndexCategory, onClickCategory }) {
+export const Categories = ({ activeIndexCategory, onClickCategory }) => {
 
 	return (
 		<div className="categories">
@@ -14,6 +14,4 @@ function Categories({ activeIndexCategory, onClickCategory }) {
       </ul>
     </div>
 	)
-}
-
-export default Categories
+};

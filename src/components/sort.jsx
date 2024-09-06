@@ -1,35 +1,32 @@
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef, useEffect } from 'react';
 
-function Sort({ selectedSort, onClickSort }) {
-	const [openSort, setOpenSort] = useState(false)
-
-	const listSort = [{name:'популярности (по убыв)', sortProperty:'raiting'},
-										{name:'популярности (по возр)', sortProperty:'-raiting'},
-										{name:'цене (по убыв)', sortProperty:'price'},
-										{name:'цене (по возр)', sortProperty:'-price'},
-										{name:'алфавиту (по убыв)', sortProperty: 'title'},
-										{name:'алфавиту (по возр)', sortProperty: '-title'}]
+export const Sort = ({ selectedSort, onClickSort }) => {
+	const [openSort, setOpenSort] = useState(false);
+	const sortRef = useRef();
+	
+	const listSort = [{name:'популярности (по убыв.)', sortProperty:'raiting'},
+										{name:'популярности (по возр.)', sortProperty:'-raiting'},
+										{name:'цене (по убыв.)', sortProperty:'price'},
+										{name:'цене (по возр.)', sortProperty:'-price'},
+										{name:'алфавиту (я-а)', sortProperty: 'title'},
+										{name:'алфавиту (а-я)', sortProperty: '-title'}];
 
 	const hiddenSort = (obj) => {
 		setOpenSort(!openSort)
 		onClickSort(obj)
-	}
-
-	const sortRef = useRef()
+	};
 
   useEffect(()=> {
-		console.log('component mount')
 		const handleClickOutside = (event) => {
 			if(!event.composedPath().includes(sortRef.current)) {
 				setOpenSort(false)
 			}
-		} 
-		document.body.addEventListener('click', handleClickOutside)
+		};
+		document.body.addEventListener('click', handleClickOutside);
 		return () => {
-			document.body.removeEventListener('click', handleClickOutside)
-			console.log('component unmount')
+			document.body.removeEventListener('click', handleClickOutside);
 		}
-	},[])
+	},[]);
 
 	return (
 		<div ref={sortRef} className="sort">
@@ -55,6 +52,4 @@ function Sort({ selectedSort, onClickSort }) {
 			)}
     </div>
 	)
-}
-
-export default Sort
+};

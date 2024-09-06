@@ -3,20 +3,20 @@ import { useSelector, useDispatch } from 'react-redux';
 // useDispatch вполняет действия, в данном случае добавляет, уменьшает и удаляет пиццу в/из корзины.
 import { addItem, minusItem, removeItem } from '../redux/slices/cartSlice';
 
-function CartItem({id, title, price, size, count, imageUrl, type}) {
-  const dispatch = useDispatch()
+export const CartItem = ({id, title, price, size, count, imageUrl, type}) => {
+  const dispatch = useDispatch();
 
   const onClickPlus = ()=> {
     dispatch(addItem({ id }))
-	}
+	};
 
 	const onClickMinus = ()=> {
     dispatch(minusItem(id))
-	}
+	};
 
 	const onClickRemove = () => {
 		dispatch(removeItem(id))
-	}
+	};
 
 	return (
 		<div className="cart__item">
@@ -47,7 +47,7 @@ function CartItem({id, title, price, size, count, imageUrl, type}) {
 			</div>
 		</div>
 		<div className="cart__item-price">
-			<b>{price * count} ₽</b>
+			<b>{price * count}₽</b>
 		</div>
 		<div className="cart__item-remove">
 			<div onClick={onClickRemove} className="button button--outline button--circle">
@@ -59,6 +59,4 @@ function CartItem({id, title, price, size, count, imageUrl, type}) {
 		</div>
 	</div>
 	)
-}
-
-export default CartItem
+};

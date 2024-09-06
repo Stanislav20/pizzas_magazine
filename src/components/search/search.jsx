@@ -1,30 +1,29 @@
-import { useState, useContext, useRef, useCallback } from 'react'
-import debounce from 'lodash.debounce'
-import { SearchContext } from '../../App'
-import styles from './search.module.scss'
+import { useState, useContext, useRef, useCallback } from 'react';
+import debounce from 'lodash.debounce';
+import { SearchContext } from '../../App';
+import styles from './search.module.scss';
 
-function Search() {
-	const [value, setValue] = useState('')
-	const { setSearchValue } = useContext(SearchContext)
-	const inputRef = useRef() //Здесь хранится ссылка на input
+export const Search = () => {
+	const [value, setValue] = useState('');
+	const { setSearchValue } = useContext(SearchContext);
+	const inputRef = useRef();
 
 	const onClickClear = () => {
-		setSearchValue('')
-		setValue('')
-		inputRef.current.focus() //здесь получаем сам input и фокусируемся на нем после очистки поиска
-	}
+		setSearchValue('');
+		setValue('');
+		inputRef.current.focus(); //здесь получаем сам input и фокусируемся на нем после очистки поиска
+	};
 
-const updateSearchValue = useCallback(
-	debounce((str) => { //debouns аналог setTimeout, в данном случае изменяет state через 0.2с
-		setSearchValue(str)
-	}, 250),
-	[]
-)
+	const updateSearchValue = useCallback(
+		debounce((str) => { //debouns аналог setTimeout, в данном случае изменяет state через 0.2с
+			setSearchValue(str)
+		}, 250),[]
+	);
 
-const onChangeInput = (event) => {
-	setValue(event.target.value)
-	updateSearchValue(event.target.value)
-}
+	const onChangeInput = (event) => {
+		setValue(event.target.value);
+		updateSearchValue(event.target.value);
+	};
 
 	return (
 		<div className={styles.root}>
@@ -43,6 +42,4 @@ const onChangeInput = (event) => {
 			}
 		</div>
 	)
-}
-
-export default Search
+};

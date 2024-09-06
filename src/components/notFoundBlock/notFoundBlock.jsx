@@ -1,6 +1,6 @@
-import styles from './notFoundBlock.module.scss'
+import styles from './notFoundBlock.module.scss';
 
-function NotFoundBlock() {
+export const NotFoundBlock = () => {
 	return (
 		<div className={styles.root}>
 			<h1><span>😕</span>
@@ -9,6 +9,4 @@ function NotFoundBlock() {
 			<p className={styles.description}>К сожалению данная страница отсутствует.</p>
 		</div>
 	)
-}
-
-export default NotFoundBlock
+};

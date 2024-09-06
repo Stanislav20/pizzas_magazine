@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 import { useSelector } from 'react-redux';
 // useSelector вытаскивает данные из хранилища
-import headerLogo from '../assets/img/pizza-logo.svg'
-import Search from './search'
+import headerLogo from '../assets/img/pizza-logo.svg';
+import { Search } from './search/search';
 
-function Header() {
-	const {items, totalPrice} = useSelector((state) => state.cartReducer)
-  const totalCount = items.reduce((sum,obj) => obj.count + sum, 0)
+export const Header = () => {
+	const {items, totalPrice} = useSelector((state) => state.cartReducer);
+  const totalCount = items.reduce((sum,obj) => obj.count + sum, 0);
 
 	return (
 		<div className="header">
@@ -60,6 +60,4 @@ function Header() {
         </div>
       </div>
 	)
-}
-
-export default Header 
+};
